@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "lint": "prettier --check",
     "test": "test",
     "build": "tsc"
   },
@@ -24,6 +25,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/node": "^20.11.17",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3"
   }
 }
