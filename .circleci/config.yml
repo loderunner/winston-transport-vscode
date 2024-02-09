@@ -59,15 +59,15 @@ workflows:
       - node/run:
           name: Lint
           npm-run: lint
-          node-version: 18.19.0
+          version: 18.19.0
       - node/test:
           name: Test
           test-results-for: jest
-          node-version: 18.19.0
+          version: 18.19.0
       - node/run:
           name: Build
           npm-run: build
-          node-version: 18.19.0
+          version: 18.19.0
 
 Release please:
   when:
