@@ -1,5 +1,5 @@
 {
-  "name": "winston-vscode",
+  "name": "vscode-winston",
   "version": "1.0.0",
   "description": "A Winston logger transport for VS Code extension development",
   "main": "dist/index.js",
