@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "prettier --check . && eslint --max-warnings=0",
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -51,5 +52,8 @@
     "logform": "^2.6.0",
     "triple-beam": "^1.4.1",
     "winston-transport": "^4.7.0"
+  },
+  "peerDependencies": {
+    "winston": ">=3.0.0"
   }
 }

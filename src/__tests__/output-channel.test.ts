@@ -31,12 +31,14 @@ describe('OutputChannelTransport', () => {
         level: 'info',
         message: 'Hello World!',
         [LEVEL]: 'info',
-        [MESSAGE]: 'Hello World!',
+        [MESSAGE]: '[info] Hello World!',
       },
       next,
     );
 
-    expect(mockOutputChannel.appendLine).toHaveBeenCalledWith('Hello World!');
+    expect(mockOutputChannel.appendLine).toHaveBeenCalledWith(
+      '[info] Hello World!',
+    );
     expect(next).toHaveBeenCalled();
   });
 

@@ -3,6 +3,7 @@
  */
 const rules = {
   'n/no-missing-import': 'off',
+  '@typescript-eslint/no-namespace': 'off',
   'sort-imports': ['warn', { ignoreDeclarationSort: true }],
   'import/first': 'warn',
   'import/order': [

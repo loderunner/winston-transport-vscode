@@ -4,13 +4,15 @@ import Transport, { TransportStreamOptions } from 'winston-transport';
 import type { TransformableInfo } from 'logform';
 import type { OutputChannel } from 'vscode';
 
-type Options = TransportStreamOptions & {
-  outputChannel: OutputChannel;
-};
+export namespace OutputChannelTransport {
+  export type Options = TransportStreamOptions & {
+    outputChannel: OutputChannel;
+  };
+}
 export class OutputChannelTransport extends Transport {
   private outputChannel: OutputChannel;
 
-  constructor(opts: Options) {
+  constructor(opts: OutputChannelTransport.Options) {
     super(opts);
     this.outputChannel = opts.outputChannel;
   }
