@@ -2,8 +2,26 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.2.0
+  github-cli: circleci/github-cli@2.3.0
+
+jobs:
+  Lint PR title:
+    executor: node/default
+    steps:
+      - github-cli/install
+      - checkout
+      - node/install-packages
+      - run:
+          name: commitlint
+          command: gh pr view --json title --jq .title | npx commitlint
 
 workflows:
+  PR checks:
+    jobs:
+      - Lint PR title:
+          context:
+            - winston-transport-vscode
+
   Lint-test-build:
     jobs:
       - node/run:
