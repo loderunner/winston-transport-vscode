@@ -60,7 +60,13 @@ module.exports = {
         'jest/globals': true,
       },
       extends: ['plugin:jest/recommended', ...configs],
-      rules,
+      rules: {
+        ...rules,
+        'n/no-unpublished-import': [
+          'error',
+          { allowModules: ['jest-mock-extended', 'winston'] },
+        ],
+      },
     },
   ],
   rules,
