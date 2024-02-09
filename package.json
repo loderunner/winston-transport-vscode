@@ -21,7 +21,7 @@
     "logs",
     "logger",
     "vscode",
-    "extension",
+    "vscode-extension",
     "microsoft"
   ],
   "author": "",
