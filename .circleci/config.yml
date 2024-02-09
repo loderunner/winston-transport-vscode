@@ -49,6 +49,14 @@ jobs:
 
 workflows:
   PR checks:
+    when:
+      or:
+        - equal:
+            - << pipeline.git.branch >>
+            - main
+        - matches:
+            value: << pipeline.git.branch >>
+            pattern: ^hotfix.*$
     jobs:
       - Lint PR title:
           context:
