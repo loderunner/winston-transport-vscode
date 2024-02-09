@@ -18,7 +18,9 @@ jobs:
 workflows:
   PR checks:
     jobs:
-      - Lint PR title
+      - Lint PR title:
+          context:
+            - winston-transport-vscode
 
   Lint-test-build:
     jobs:
