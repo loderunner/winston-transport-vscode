@@ -4,9 +4,14 @@ orbs:
   node: circleci/node@5.2.0
   github-cli: circleci/github-cli@2.3.0
 
+executors:
+  node:
+    docker:
+      - image: cimg/node:18.19.0
+
 jobs:
   Lint PR title:
-    executor: node/default
+    executor: node
     steps:
       - github-cli/install
       - checkout
@@ -15,6 +20,33 @@ jobs:
           name: commitlint
           command: gh pr view --json title --jq .title | npx commitlint
 
+  GitHub release:
+    executor: node
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: GitHub release
+          command: |
+            npx release-please github-release \
+              --token $GITHUB_TOKEN \
+              --repo-url $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME \
+              --target-branch $CIRCLE_BRANCH
+
+  Release PR:
+    executor: node
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Release PR
+          command: |
+            npx release-please release-pr \
+              --token $GITHUB_TOKEN \
+              --repo-url $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME \
+              --target-branch $CIRCLE_BRANCH \
+              --draft-pull-request
+
 workflows:
   PR checks:
     jobs:
@@ -22,14 +54,22 @@ workflows:
           context:
             - winston-transport-vscode
 
-  Lint-test-build:
+  Lint test & build:
     jobs:
       - node/run:
           name: Lint
           npm-run: lint
+          node-version: 18.19.0
       - node/test:
           name: Test
           test-results-for: jest
+          node-version: 18.19.0
       - node/run:
           name: Build
           npm-run: build
+          node-version: 18.19.0
+
+Release please:
+  jobs:
+    - Release PR
+    - GitHub release
