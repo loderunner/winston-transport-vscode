@@ -83,5 +83,9 @@ workflows:
   Release please:
     when: *release-branch
     jobs:
-      - Release PR
-      - GitHub release
+      - Release PR:
+          context:
+            - winston-transport-vscode
+      - GitHub release:
+          context:
+            - winston-transport-vscode
