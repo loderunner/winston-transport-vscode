@@ -1,0 +1,29 @@
+{
+  "name": "winston-vscode",
+  "version": "1.0.0",
+  "description": "A Winston logger transport for VS Code extension development",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "test",
+    "build": "tsc"
+  },
+  "keywords": [
+    "winston",
+    "winstonjs",
+    "transport",
+    "log",
+    "logging",
+    "logs",
+    "logger",
+    "vscode",
+    "extension",
+    "microsoft"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "typescript": "^5.3.3"
+  }
+}
