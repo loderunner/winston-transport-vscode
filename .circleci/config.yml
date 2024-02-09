@@ -7,8 +7,11 @@ workflows:
   Lint-test-build:
     jobs:
       - node/run:
+          name: Lint
           npm-run: lint
       - node/test:
+          name: Test
           test-results-for: jest
       - node/run:
+          name: Build
           npm-run: build
