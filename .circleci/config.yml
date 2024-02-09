@@ -49,12 +49,16 @@ jobs:
 
 workflows:
   PR checks:
+    when:
+      not: *release-branch
     jobs:
       - Lint PR title:
           context:
             - winston-transport-vscode
 
   Lint test & build:
+    when:
+      not: *release-branch
     jobs:
       - node/run:
           name: Lint
@@ -69,15 +73,15 @@ workflows:
           npm-run: build
           version: 18.19.0
 
-Release please:
-  when:
-    or:
-      - equal:
-          - << pipeline.git.branch >>
-          - main
-      - matches:
-          value: << pipeline.git.branch >>
-          pattern: ^hotfix.*$
-  jobs:
-    - Release PR
-    - GitHub release
+  Release please:
+    when: &release-branch
+      or:
+        - equal:
+            - << pipeline.git.branch >>
+            - main
+        - matches:
+            value: << pipeline.git.branch >>
+            pattern: ^hotfix.*$
+    jobs:
+      - Release PR
+      - GitHub release
