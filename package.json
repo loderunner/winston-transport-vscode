@@ -1,6 +1,6 @@
 {
   "name": "winston-transport-vscode",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A Winston logger transport for VS Code extension development",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,6 +48,7 @@
     "jest-junit": "16.0.0",
     "jest-mock-extended": "3.0.5",
     "prettier": "3.2.5",
+    "release-please": "16.8.0",
     "typescript": "5.3.3",
     "winston": "3.11.0"
   },
