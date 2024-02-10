@@ -47,17 +47,31 @@ jobs:
               --target-branch $CIRCLE_BRANCH \
               --draft-pull-request
 
+  Publish:
+    executor: node
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Configure auth
+          command: npm config set _auth "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+      - run:
+          name: Publish
+          command: npm run publish
+
 workflows:
   PR checks:
     when:
-      not: &release-branch
-        or:
-          - equal:
-              - << pipeline.git.branch >>
-              - main
-          - matches:
-              value: << pipeline.git.branch >>
-              pattern: ^hotfix.*$
+      and:
+        - not: &release-branch
+            or:
+              - equal:
+                  - << pipeline.git.branch >>
+                  - main
+              - matches:
+                  value: << pipeline.git.branch >>
+                  pattern: ^hotfix.*$
+        - not: << pipeline.git.tag >>
     jobs:
       - Lint PR title:
           context:
@@ -65,7 +79,9 @@ workflows:
 
   Lint test & build:
     when:
-      not: *release-branch
+      and:
+        - not: *release-branch
+        - not: << pipeline.git.tag >>
     jobs:
       - node/run:
           name: Lint
@@ -81,11 +97,24 @@ workflows:
           version: 18.19.0
 
   Release please:
-    when: *release-branch
+    when:
+      and:
+        - *release-branch
+        - not: << pipeline.git.tag >>
     jobs:
       - Release PR:
           context:
             - winston-transport-vscode
       - GitHub release:
+          context:
+            - winston-transport-vscode
+
+  Publish:
+    when:
+      matches:
+        value: << pipeline.git.tag >>
+        pattern: ^\d+\.\d+\.\d+
+    jobs:
+      - Publish:
           context:
             - winston-transport-vscode
