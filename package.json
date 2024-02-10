@@ -4,11 +4,17 @@
   "description": "A Winston logger transport for VS Code extension development",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "!src/**/__tests__/**/*"
+  ],
   "scripts": {
     "lint": "prettier --check . && eslint --max-warnings=0",
     "test": "jest",
     "build": "tsc",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "prepack": "rimraf dist && npm run build"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -49,6 +55,7 @@
     "jest-mock-extended": "3.0.5",
     "prettier": "3.2.5",
     "release-please": "16.8.0",
+    "rimraf": "5.0.5",
     "typescript": "5.3.3",
     "winston": "3.11.0"
   },
