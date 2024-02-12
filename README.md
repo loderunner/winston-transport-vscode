@@ -14,6 +14,8 @@ A VS Code extension transport for [Winston](https://github.com/winstonjs/winston
 - [Levels](#levels)
 - [Format](#format)
   - [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -151,13 +153,26 @@ JSON.
 ```js
 const fmt = LogOutputChannelTransport.format();
 
-fmt.transform({ level: 'info', message: 'Hello World!', extra: 'info' });
+fmt.transform({ level: 'info', message: 'Hello World!', extra: 'value' });
 // {
 //   level: 'info',
 //   message: 'Hello World!',
 //   extra: 'info',
 //   [Symbol(level)]: 'info',
-//   [Symbol(message)]: 'Hello World! extra="info"'
+//   [Symbol(message)]: 'Hello World! extra="value"'
+// }
+
+fmt.transform({
+  level: 'info',
+  message: 'Hello World!',
+  nested: { values: { are: { supported: true } } },
+});
+// {
+//   level: 'info',
+//   message: 'Hello World!',
+//   nested: { values: { are: [Object] } },
+//   [Symbol(level)]: 'info',
+//   [Symbol(message)]: 'Hello World! nested.values.are.accepted=true'
 // }
 ```
 
@@ -175,4 +190,26 @@ const logger = winston.createLogger({
 
   transports: [new LogOutputChannelTransport({ outputChannel })],
 });
+
+logger.info('Hello World!', { extra: 'value', nested: { value: 'too' } });
+// Output to log channel:
+// 2024-02-12 21:18:36.382 [info] Hello World! extra="value" nested.value="too"
 ```
+
+## Contributing
+
+PRs and issues are welcome on this repository.
+
+## License
+
+Copyright 2024 Charles Francoise
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
