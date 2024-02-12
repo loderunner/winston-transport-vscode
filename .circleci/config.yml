@@ -44,8 +44,7 @@ jobs:
             npx release-please release-pr \
               --token $GITHUB_TOKEN \
               --repo-url $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME \
-              --target-branch $CIRCLE_BRANCH \
-              --draft-pull-request
+              --target-branch $CIRCLE_BRANCH
 
   Publish:
     executor: node
