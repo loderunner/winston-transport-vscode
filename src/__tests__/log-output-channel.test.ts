@@ -126,5 +126,25 @@ describe('LogOutputChannelTransport', () => {
       expect(message).toMatch(/ nil=null/);
       expect(message).toMatch(/ thx=1138/);
     });
+
+    it('should format the message with nested values', () => {
+      const info = LogOutputChannelTransport.format().transform({
+        level: 'info',
+        message: 'Hello World!',
+        nested: {
+          values: {
+            should: 'work',
+          },
+          really: 'yeah',
+        },
+        this: { is: 'incredible' },
+      });
+
+      const message = info[MESSAGE];
+      expect(message).toMatch(/^Hello World! /);
+      expect(message).toMatch(/ nested.values.should="work"/);
+      expect(message).toMatch(/ nested.really="yeah"/);
+      expect(message).toMatch(/ this.is="incredible"/);
+    });
   });
 });

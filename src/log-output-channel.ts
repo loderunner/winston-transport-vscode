@@ -44,16 +44,25 @@ export class LogOutputChannelTransport extends Transport {
   }
 }
 
+// Pass empty string for key if this is a root-level object
+function stringify(key: string, val: unknown): string {
+  if (typeof val === 'object' && !Array.isArray(val) && val !== null) {
+    // Recursively stringify objects
+    const prefix = key === '' ? '' : `${key}.`;
+    return Object.entries(val)
+      .map(([k, v]) => `${stringify(`${prefix}${k}`, v)}`)
+      .join(' ');
+  }
+
+  return `${key}=${JSON.stringify(val)}`;
+}
+
 const formatFunc = format((info: TransformableInfo): TransformableInfo => {
   const { level, message, ...rest } = info;
 
-  const restPairs = Object.entries(rest)
-    .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
-    .join(' ');
-
   let msg = info[MESSAGE] ?? message;
-  if (restPairs.length > 0) {
-    msg += ` ${restPairs}`;
+  if (Object.keys(rest).length > 0) {
+    msg += ` ${stringify('', rest)}`;
   }
 
   return {
