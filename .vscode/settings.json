@@ -1,3 +1,4 @@
 {
-  "jest.jestCommandLine": "npm run test --"
+  "jest.jestCommandLine": "npm run test --",
+  "markdown.extension.toc.levels": "2..4"
 }
