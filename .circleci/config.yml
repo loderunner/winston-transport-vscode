@@ -109,7 +109,11 @@ workflows:
             - winston-transport-vscode
 
   Publish:
-    when: << pipeline.git.tag >>
+    when:
+      not:
+        equal:
+          - << pipeline.git.tag >>
+          - ''
     jobs:
       - Publish:
           context:
