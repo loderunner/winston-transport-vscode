@@ -69,7 +69,7 @@ workflows:
                   - main
               - matches:
                   value: << pipeline.git.branch >>
-                  pattern: '^hotfix.*$'
+                  pattern: ^hotfix.*$
         - not: << pipeline.git.tag >>
     jobs:
       - Lint PR title:
@@ -112,7 +112,7 @@ workflows:
     when:
       matches:
         value: << pipeline.git.tag >>
-        pattern: "^\\d+\\.\\d+\\.\\d+-.*$"
+        pattern: ^\d+\.\d+\.\d+(-(.+))?$
     jobs:
       - Publish:
           context:
