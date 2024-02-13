@@ -52,11 +52,10 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          name: Configure auth
-          command: npm config set _auth "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
-      - run:
           name: Publish
-          command: npm run publish
+          command: |
+            npm config set _auth "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+            npm run publish
 
 workflows:
   PR checks:
