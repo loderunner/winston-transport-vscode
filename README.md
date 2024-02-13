@@ -1,6 +1,6 @@
 # winston-transport-vscode
 
-A VS Code extension transport for [Winston](https://github.com/winstonjs/winston) logger
+A [Winston](https://github.com/winstonjs/winston) logger transport for VS Code extension development.
 
 [![CircleCI](https://circleci.com/gh/loderunner/winston-transport-vscode.svg?style=shield)](https://app.circleci.com/pipelines/github/loderunner/winston-transport-vscode?branch=main)
 [![NPM](https://img.shields.io/npm/v/winston-transport-vscode)](https://www.npmjs.com/package/winston-transport-vscode)
