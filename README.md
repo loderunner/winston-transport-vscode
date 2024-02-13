@@ -2,7 +2,9 @@
 
 A VS Code extension transport for [Winston](https://github.com/winstonjs/winston) logger
 
-[![loderunner](https://circleci.com/gh/loderunner/winston-transport-vscode.svg?style=shield)](https://app.circleci.com/pipelines/github/loderunner/winston-transport-vscode?branch=main)
+[![CircleCI](https://circleci.com/gh/loderunner/winston-transport-vscode.svg?style=shield)](https://app.circleci.com/pipelines/github/loderunner/winston-transport-vscode?branch=main)
+[![NPM](https://img.shields.io/npm/v/winston-transport-vscode)](https://www.npmjs.com/package/winston-transport-vscode)
+[![Apache-2.0](https://img.shields.io/npm/l/winston-transport-vscode)](https://choosealicense.com/licenses/apache-2.0/)
 
 ---
 
