@@ -110,11 +110,15 @@ workflows:
 
   Publish:
     when:
-      not:
-        equal:
-          - << pipeline.git.tag >>
-          - ''
+      matches:
+        value: << pipeline.git.tag >>
+        pattern: "^\\d+\\.\\d+\\.\\d+(-(.+))?$"
     jobs:
       - Publish:
           context:
             - winston-transport-vscode
+          # HACK: job needs tag filter for `when` to work
+          filters:
+            tags:
+              only:
+                - /.*/
