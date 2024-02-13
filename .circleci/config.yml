@@ -55,7 +55,7 @@ jobs:
           name: Publish
           command: |
             npm config set //registry.npmjs.org/:_auth "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
-            npm run publish
+            npm publish
 
 workflows:
   PR checks:
