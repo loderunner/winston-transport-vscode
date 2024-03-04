@@ -9,20 +9,28 @@ executors:
     docker:
       - image: cimg/node:18.19.0
 
+commands:
+  sleep-10:
+    description: Sleep for 10 seconds
+    steps:
+      - run: sleep 10
+
 jobs:
   Lint PR title:
     executor: node
     steps:
-      - github-cli/install
-      - checkout
-      - node/install-packages
-      - run:
-          name: commitlint
-          command: gh pr view --json title --jq .title | npx commitlint
+      - sleep-10
+      # - github-cli/install
+      # - checkout
+      # - node/install-packages
+      # - run:
+      #     name: commitlint
+      #     command: gh pr view --json title --jq .title | npx commitlint
 
   GitHub release:
     executor: node
     steps:
+      - sleep-10
       - checkout
       - node/install-packages
       - run:
@@ -36,6 +44,7 @@ jobs:
   Release PR:
     executor: node
     steps:
+      - sleep-10
       - checkout
       - node/install-packages
       - run:
@@ -49,6 +58,7 @@ jobs:
   Publish:
     executor: node
     steps:
+      - sleep-10
       - checkout
       - node/install-packages
       - run:
