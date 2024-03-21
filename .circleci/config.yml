@@ -7,7 +7,7 @@ orbs:
 executors:
   node:
     docker:
-      - image: cimg/node:18.19.0
+      - image: cimg/node:20.10
 
 jobs:
   Lint PR title:
