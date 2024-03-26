@@ -1,4 +1,8 @@
 {
   "jest.jestCommandLine": "npm run test --",
-  "markdown.extension.toc.levels": "2..4"
+  "markdown.extension.toc.levels": "2..4",
+  "circleci.persistedProjectSelection": [
+    "circleci/27HiJjfeSar9ELMpivBc9u/2NNH9CteozPi1iwZpmRTK7"
+  ],
+  "circleci.filters.branchFilter": "allBranches"
 }
