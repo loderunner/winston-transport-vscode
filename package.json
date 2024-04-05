@@ -56,7 +56,7 @@
     "prettier": "3.2.5",
     "release-please": "16.10.1",
     "rimraf": "5.0.5",
-    "typescript": "5.4.3",
+    "typescript": "5.4.4",
     "winston": "3.13.0"
   },
   "dependencies": {
