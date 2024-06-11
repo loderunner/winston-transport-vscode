@@ -1,5 +1,5 @@
 lint:
-  stage: lint-test-build
+  stage: build
   image: cimg/node:18.19.0
   script:
     - npm ci
@@ -10,7 +10,7 @@ lint:
         - package-lock.json
 
 test:
-  stage: lint-test-build
+  stage: build
   image: cimg/node:18.19.0
   script:
     - npm ci
@@ -21,7 +21,7 @@ test:
         - package-lock.json
 
 build:
-  stage: lint-test-build
+  stage: build
   image: cimg/node:18.19.0
   script:
     - npm ci
