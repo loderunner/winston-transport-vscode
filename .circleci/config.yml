@@ -76,10 +76,6 @@ workflows:
             - winston-transport-vscode
 
   Lint test & build:
-    when:
-      and:
-        - not: *release-branch
-        - not: << pipeline.git.tag >>
     jobs:
       - node/run:
           name: Lint
