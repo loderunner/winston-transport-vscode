@@ -1,0 +1,32 @@
+lint:
+  stage: lint-test-build
+  image: cimg/node:18.19.0
+  script:
+    - npm ci
+    - npm run lint
+  cache:
+    key:
+      files:
+        - package-lock.json
+
+test:
+  stage: lint-test-build
+  image: cimg/node:18.19.0
+  script:
+    - npm ci
+    - npm run test
+  cache:
+    key:
+      files:
+        - package-lock.json
+
+build:
+  stage: lint-test-build
+  image: cimg/node:18.19.0
+  script:
+    - npm ci
+    - npm run build
+  cache:
+    key:
+      files:
+        - package-lock.json
