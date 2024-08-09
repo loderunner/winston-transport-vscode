@@ -57,7 +57,7 @@
     "release-please": "16.12.0",
     "rimraf": "5.0.8",
     "typescript": "5.5.4",
-    "winston": "3.14.0"
+    "winston": "3.14.1"
   },
   "dependencies": {
     "logform": "^2.6.0",
