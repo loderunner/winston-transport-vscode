@@ -39,7 +39,7 @@
     "@commitlint/config-conventional": "19.5.0",
     "@swc/core": "1.7.26",
     "@swc/jest": "0.2.36",
-    "@types/jest": "29.5.12",
+    "@types/jest": "29.5.13",
     "@types/node": "18.19.0",
     "@types/vscode": "1.93.0",
     "@typescript-eslint/eslint-plugin": "8.5.0",
