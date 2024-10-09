@@ -54,7 +54,7 @@
     "jest-junit": "16.0.0",
     "jest-mock-extended": "3.0.7",
     "prettier": "3.3.3",
-    "release-please": "16.14.1",
+    "release-please": "16.14.2",
     "rimraf": "6.0.1",
     "typescript": "5.6.2",
     "winston": "3.15.0"
